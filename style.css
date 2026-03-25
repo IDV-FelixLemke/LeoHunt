@@ -27,7 +27,7 @@ main {
 
 div.content {
     background-color: oklch(from var(--main-color) l c h / .3);
-    backdrop-filter: blur(15px) brightness(0.6);
+    backdrop-filter: blur(7px) brightness(0.6);
     border-radius: 20px;
     box-shadow: 0 0 0 1px var(--accent-color), 2px 2px 10px 5px var(--main-color);
     position: relative;
@@ -75,7 +75,7 @@ div.content {
         transition: 200ms linear;
         cursor: pointer;
     }
-    li:hover {
+    .selected {
         box-shadow: 0 0 2px 3px white;
         letter-spacing: 1px;
     }
