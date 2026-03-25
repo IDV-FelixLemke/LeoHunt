@@ -8,11 +8,32 @@ const steps = [{
         "2011"
     ],
     correctAnswer: "2"
+},{
+    imgsrc: "imgHints/HohenmStadtkirche.jpg",
+    question: "Das ist die zweite Frage?",
+    answers: [
+        "Ja",
+        "Nein",
+        "Vielleicht",
+        "Weiß ich auch nicht"
+    ],
+    correctAnswer: "1"
 }];
 var curStep = undefined;
+var param = new URLSearchParams(window.location.search);
+var stepIdx = param.get("step") || 0;
 
 function init() {
-    curStep = steps[0]; // for now only one step
+    if(stepIdx >= steps.length) {
+        $("#imageHint").html(`
+            <h1>Herzlichen Glückwunsch</h1>
+        `);
+        $("#questionBox").html(`
+            <h3>Das Ende der Schnitzeljagd ist erreicht.</h3>
+        `);
+        return;
+    }
+    curStep = steps[stepIdx]; // for now only one step
     $("#imageHint img").attr("src", curStep.imgsrc);
     $("#Question").text(curStep.question);
     let answers = '';
@@ -37,7 +58,10 @@ function checkAnswer() {
     if(!answer) return;
     if(curStep.correctAnswer == answer) {
         $("#Answers .selected").addClass("correct");
+        param.set("step", stepIdx + 1);
+        window.location.search = param.toString();
         console.log("Answer is correct");
+        
     } else {
         console.log("Wrong Answer");
         $("#Answers .selected").addClass("wrong");
