@@ -8,4 +8,10 @@ function init() {
     })
 }
 
+function checkAnswer() {
+    let answer = $("#Answers .selected").data("answer");
+    if(!answer) return;
+    console.log("Is answer", answer, "correct?");
+}
+
 init();
