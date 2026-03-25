@@ -108,4 +108,11 @@ div.content {
         outline: 1px solid white;
         letter-spacing: 1px;
     }
+    .wrong {
+        text-decoration: line-through;
+        background: darkred;
+    }
+    .correct {
+        background: darkgreen;
+    }
 }
