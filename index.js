@@ -7,17 +7,17 @@ const steps = [{
         "die Zukunft",
         "2011"
     ],
-    correctAnswer: "2"
-},{
-    imgsrc: "imgHints/HohenmStadtkirche.jpg",
-    question: "Das ist die zweite Frage?",
-    answers: [
-        "Ja",
-        "Nein",
-        "Vielleicht",
-        "Weiß ich auch nicht"
-    ],
     correctAnswer: "1"
+},{
+    imgsrc: "imgHints/Agricolagymnasium_Hohenmölsen,_Sachsen-Anhalt,_Amphitheater.jpg",
+    question: "Wie viele Sitzreihen hat das Amphitheater?",
+    answers: [
+        "Nur eine",
+        "15 Reihen",
+        "100 Reihen",
+        "Soweit kann ich nicht zählen"
+    ],
+    correctAnswer: "2"
 }];
 var curStep = undefined;
 var param = new URLSearchParams(window.location.search);
@@ -25,14 +25,22 @@ var stepIdx = param.get("step") || 0;
 
 function init() {
     if(stepIdx >= steps.length) {
-        $("#imageHint").html(`
-            <h1>Herzlichen Glückwunsch</h1>
-        `);
+//         
+        $("#imageHint img").attr("src", "./img/bjorn-pierre--clf0K7plGM-unsplash.jpg");
+        $("#bCheckAnswer").addClass("hidden");
         $("#questionBox").html(`
-            <h3>Das Ende der Schnitzeljagd ist erreicht.</h3>
+            <div class="successMsg">
+                <h1>Glückwunsch</h1>
+                <h3>Ihr habt es geschafft!</h3>
+                <p>Jetzt viel Spaß mit dem Schatz.</p>
+            </div>
         `);
         return;
     }
+    if(stepIdx == 0) {
+        $("#bBack").addClass("hidden");
+    }
+    
     curStep = steps[stepIdx]; // for now only one step
     $("#imageHint img").attr("src", curStep.imgsrc);
     $("#Question").text(curStep.question);
@@ -58,13 +66,16 @@ function checkAnswer() {
     if(!answer) return;
     if(curStep.correctAnswer == answer) {
         $("#Answers .selected").addClass("correct");
-        param.set("step", stepIdx + 1);
+        param.set("step", parseInt(stepIdx) + 1);
         window.location.search = param.toString();
-        console.log("Answer is correct");
-        
     } else {
-        console.log("Wrong Answer");
         $("#Answers .selected").addClass("wrong");
+    }
+}
+
+function navBack() {
+    if (navigation.canGoBack) {
+        navigation.back();
     }
 }
 
