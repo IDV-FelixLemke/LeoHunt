@@ -74,7 +74,7 @@ const steps = [{
     answers: [
         "1. Geht zum höchsten Punkt an diesem Ort.",
         "2. Haltet Ausschau nach dem Baum mit kaputter Rinde und Vogelhaus. Geht zu diesem Baum.",
-        "3. Wendet euren Blick Richtung Westen (Feld) und schreite voran, bis ihr einen alten Steinofen entdeckt.",
+        "3. Wendet euren Blick Richtung Westen (Feld) und schreitet voran, bis ihr einen alten Steinofen entdeckt.",
         "4. Untersucht den Steinofen, um den letzten Hinweis zu finden.",
         "5. Ihr seid dem Hinweis gefolgt? Dann schließt die Schatzsuche ab!"
     ],
