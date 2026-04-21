@@ -19,13 +19,16 @@ body {
     background-size: contain;
     height: 100svh;
     width: 100vw;
-/*     max-width:1000px; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 main {
     display: grid;
     position: absolute;
     width: 100%;
+    max-width: 800px;
 }
 
 footer {
